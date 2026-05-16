@@ -2,14 +2,11 @@
 {
   imports = [ ./keymaps.nix ];
 
-  extraPlugins = with pkgs.vimPlugins; [
-    {
-      plugin = hardtime-nvim;
-      config = ''
-        lua require("hardtime").setup()
-      '';
-    }
-  ];
+  extraPlugins = with pkgs.vimPlugins; [ hardtime-nvim ];
+
+  extraConfigLua = ''
+    require("hardtime").setup()
+  '';
 
   plugins = {
     colorizer.enable = true;
